@@ -22,10 +22,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
 
-    implementation project(':latteec')
+    api project(':latte_ec')
     annotationProcessor project(':latte_compiler')
-
-
 
 
 }

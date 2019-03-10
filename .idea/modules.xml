@@ -7,7 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/latte_annotations/latte_annotations.iml" filepath="$PROJECT_DIR$/latte_annotations/latte_annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte_compiler/latte_compiler.iml" filepath="$PROJECT_DIR$/latte_compiler/latte_compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte_core/latte_core.iml" filepath="$PROJECT_DIR$/latte_core/latte_core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/latteec/latteec.iml" filepath="$PROJECT_DIR$/latteec/latteec.iml" />
+      <module fileurl="file://$PROJECT_DIR$/latte_ec/latte_ec.iml" filepath="$PROJECT_DIR$/latte_ec/latte_ec.iml" />
     </modules>
   </component>
 </project>
