@@ -1,25 +1,25 @@
 package com.chen.latte.app;
 
-import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
-import java.util.WeakHashMap;
+import java.util.HashMap;
 
 public class Configurator {
-    private static final WeakHashMap<String,Object> LATTE_CONFIGS = new WeakHashMap<>();
+    private static final HashMap<String,Object> LATTE_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
     private Configurator(){
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(),false);
     }
 
+    @SuppressWarnings("unchecked")
     public static Configurator getInstance(){
         return Holder.Instance;
     }
 
-    final WeakHashMap<String,Object> getLatteConfigs(){
+    final HashMap<String,Object> getLatteConfigs(){
         return LATTE_CONFIGS;
     }
 

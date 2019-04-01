@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 28
@@ -24,6 +25,4 @@ dependencies {
 
     api project(':latte_ec')
     annotationProcessor project(':latte_compiler')
-
-
 }

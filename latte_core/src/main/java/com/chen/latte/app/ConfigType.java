@@ -2,7 +2,7 @@ package com.chen.latte.app;
 
 public enum ConfigType {
     API_HOST,
-    APPLICATION_CONFIGHT,
+    APPLICATION_CONTEXT,
     CONFIG_READY,
     ICON
 }
