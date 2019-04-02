@@ -1,5 +1,7 @@
 package com.chen.latte.net;
 
+import android.content.Context;
+
 import com.chen.latte.net.callback.IError;
 import com.chen.latte.net.callback.IFailure;
 import com.chen.latte.net.callback.IRequest;
@@ -19,6 +21,7 @@ public class RestCilentBuilder {
     private  IRequest mIREQUEST;
     private  IFailure mIFAILURE;
     private  RequestBody mREQUESTBODY;
+    private Context mContext;
 
     public RestCilentBuilder url(String URL) {
         mURL = URL;
@@ -62,9 +65,12 @@ public class RestCilentBuilder {
         this.mREQUESTBODY =  RequestBody.create(MediaType.parse("applciation/json;charset=UTF-8"),raw);
         return this;
     }
+    public void addcontext(Context context){
+        this.mContext = context;
+    }
 
     public RestCilent build(){
-        return new RestCilent(mURL,mISUCCESS,mPARAMS,mIERROR,mIREQUEST,mIFAILURE,mREQUESTBODY);
+        return new RestCilent(mURL,mISUCCESS,mPARAMS,mIERROR,mIREQUEST,mIFAILURE,mREQUESTBODY,mContext);
     }
 
 

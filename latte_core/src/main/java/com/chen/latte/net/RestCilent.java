@@ -1,12 +1,16 @@
 package com.chen.latte.net;
 
+import android.content.Context;
 import android.provider.Telephony;
 
+import com.chen.latte.app.Latte;
 import com.chen.latte.net.callback.IError;
 import com.chen.latte.net.callback.IFailure;
 import com.chen.latte.net.callback.IRequest;
 import com.chen.latte.net.callback.ISuccess;
 import com.chen.latte.net.callback.LatteCallBack;
+import com.chen.latte.net.ui.LatteLaoder;
+import com.chen.latte.net.ui.LoaderCreater;
 
 import java.util.Map;
 
@@ -22,6 +26,7 @@ public class RestCilent {
     private  final IRequest IREQUEST;
     private  final IFailure IFAILURE;
     private  final RequestBody REQUESTBODY;
+    private  final Context MCONTENXT;
 
     public RestCilent(String URLc,
                       ISuccess ISUCCESS,
@@ -29,7 +34,8 @@ public class RestCilent {
                       IError IERROR,
                       IRequest IREQUEST,
                       IFailure IFAILURE,
-                      RequestBody REQUESTBODY) {
+                      RequestBody REQUESTBODY,
+                      Context Context) {
         this.URL = URLc;
         this.PARAMS.putAll(map);
         this.ISUCCESS = ISUCCESS;
@@ -37,6 +43,7 @@ public class RestCilent {
         this.IREQUEST = IREQUEST;
         this.IFAILURE = IFAILURE;
         this.REQUESTBODY = REQUESTBODY;
+        this.MCONTENXT = Context;
     }
 
     public static RestCilentBuilder builder(){
@@ -48,6 +55,9 @@ public class RestCilent {
         Call<String> call = null;
         if (IREQUEST != null){
             IREQUEST.onRequeststrat();
+            if (MCONTENXT!=null){
+                LatteLaoder.showLoading(MCONTENXT);
+            }
         }
 
         switch (method){
