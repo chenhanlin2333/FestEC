@@ -13,7 +13,7 @@ public final class Latte {
     }
 
 
-    private static HashMap<String,Object> getConfigurations(){
+    public static HashMap<String,Object> getConfigurations(){
         return Configurator.getInstance().getLatteConfigs();
     }
 
