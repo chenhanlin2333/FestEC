@@ -1,4 +1,4 @@
-package com.chen.latte.net.ui;
+package com.chen.latte.ui;
 
 
 @SuppressWarnings("unused")

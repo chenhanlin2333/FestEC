@@ -1,11 +1,14 @@
 package com.chen.latte.net;
 
 import com.chen.latte.app.ConfigType;
+import com.chen.latte.app.Configurator;
 import com.chen.latte.app.Latte;
 
+import java.util.ArrayList;
 import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -42,7 +45,19 @@ public class RestCreater {
 
     private static final class Okhttpholder{
         private static long timeout = 60;
-        private static OkHttpClient cilent = new OkHttpClient.Builder()
+        private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
+
+        private static OkHttpClient.Builder addinterceptor(){
+            ArrayList<Interceptor> arrayList = Configurator.getInstance().getConfigguration(ConfigType.Interceptor);
+            if (arrayList !=null && !arrayList.isEmpty() ){
+                for (Interceptor interceptor:arrayList){
+                    BUILDER.addInterceptor(interceptor);
+                }
+            }
+            return BUILDER;
+        }
+
+        private static OkHttpClient cilent = addinterceptor()
                 .connectTimeout(timeout, TimeUnit.SECONDS)
                 .build();
     }

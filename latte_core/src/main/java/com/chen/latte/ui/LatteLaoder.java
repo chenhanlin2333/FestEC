@@ -1,9 +1,8 @@
-package com.chen.latte.net.ui;
+package com.chen.latte.ui;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
-import android.text.Layout;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;

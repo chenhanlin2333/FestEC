@@ -1,10 +1,8 @@
 package com.chen.latte.net.callback;
 
 import android.os.Handler;
-import android.os.Message;
 
-import com.chen.latte.app.Latte;
-import com.chen.latte.net.ui.LatteLaoder;
+import com.chen.latte.ui.LatteLaoder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,6 +14,7 @@ public class LatteCallBack implements Callback<String> {
     private  final IError IERROR;
     private  final IRequest IREQUEST;
     private  final IFailure IFAILURE;
+    private  final  Handler mHandler = new Handler();
 
 
     public LatteCallBack(ISuccess ISUCCESS, IError IERROR, IRequest IREQUEST, IFailure IFAILURE) {
@@ -44,8 +43,13 @@ public class LatteCallBack implements Callback<String> {
                 IREQUEST.onRequestend();
             }
         }
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LatteLaoder.stopLoade();
+            }
+        },1000);
 
-        LatteLaoder.stopLoade();
     }
 
     @Override

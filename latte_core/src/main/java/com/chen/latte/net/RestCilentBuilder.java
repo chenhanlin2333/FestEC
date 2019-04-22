@@ -7,6 +7,7 @@ import com.chen.latte.net.callback.IFailure;
 import com.chen.latte.net.callback.IRequest;
 import com.chen.latte.net.callback.ISuccess;
 
+import java.io.File;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -22,6 +23,20 @@ public class RestCilentBuilder {
     private  IFailure mIFAILURE;
     private  RequestBody mREQUESTBODY;
     private Context mContext;
+    private File mFile;
+    private String DOWNLOAD_DIR;
+    private String EXTENSION;
+    private String NAME;
+
+
+    public void setFile(File file){
+        mFile = file;
+    }
+
+    public void setFile(String file){
+        File file1 = new File(file);
+        mFile =file1;
+    }
 
     public RestCilentBuilder url(String URL) {
         mURL = URL;
@@ -30,6 +45,10 @@ public class RestCilentBuilder {
 
     public RestCilentBuilder params(WeakHashMap<String, Object> PARAMS) {
         mPARAMS.putAll(PARAMS);
+        return this;
+    }
+    public RestCilentBuilder params(String key,String value) {
+        mPARAMS.put(key,value);
         return this;
     }
 
@@ -65,12 +84,32 @@ public class RestCilentBuilder {
         this.mREQUESTBODY =  RequestBody.create(MediaType.parse("applciation/json;charset=UTF-8"),raw);
         return this;
     }
-    public void addcontext(Context context){
+    public RestCilentBuilder addcontextandload(Context context){
         this.mContext = context;
+        return this;
     }
 
+
+    public final RestCilentBuilder dir(String dir){
+        this.DOWNLOAD_DIR = dir;
+        return this;
+    }
+
+    public final RestCilentBuilder extension(String extension){
+        this.DOWNLOAD_DIR = extension;
+        return this;
+    }
+
+
+    public final RestCilentBuilder filename(String name){
+        this.NAME = name;
+        return this;
+    }
+
+
+
     public RestCilent build(){
-        return new RestCilent(mURL,mISUCCESS,mPARAMS,mIERROR,mIREQUEST,mIFAILURE,mREQUESTBODY,mContext);
+        return new RestCilent(mURL,mISUCCESS,mPARAMS,mIERROR,mIREQUEST,mIFAILURE,mREQUESTBODY,mFile,mContext,DOWNLOAD_DIR,EXTENSION,NAME);
     }
 
 

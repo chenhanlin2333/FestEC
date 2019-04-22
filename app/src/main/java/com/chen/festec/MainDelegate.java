@@ -1,6 +1,7 @@
 package com.chen.festec;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
@@ -10,8 +11,11 @@ import com.chen.latte.net.callback.IError;
 import com.chen.latte.net.callback.IFailure;
 import com.chen.latte.net.callback.IRequest;
 import com.chen.latte.net.callback.ISuccess;
+import com.chen.latte.ui.LatteLaoder;
 
 public class MainDelegate extends LatteDelegate {
+
+    private final Handler mHandler = new Handler();
     @Override
     public Object setLayout() {
         return R.layout.delegate_main;
@@ -24,12 +28,12 @@ public class MainDelegate extends LatteDelegate {
 
 
     private void testRestCilent(){
+        LatteLaoder.showLoading(getActivity());
         RestCilent.builder()
-                .url("https://www.jianshu.com/p/1133389c1f75")
+                .url("http://127.0.0.1//index")
                 .error(new IError() {
                     @Override
-                    public void onError(int id, String mesg) {
-
+                    public void onError(int id, String mesg){
                     }
                 })
                 .success(new ISuccess() {

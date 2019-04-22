@@ -1,4 +1,4 @@
-package com.chen.latte.net.ui;
+package com.chen.latte.ui;
 
 import android.content.Context;
 
@@ -29,7 +29,8 @@ public class LoaderCreater {
         if (!name.contains(".")) {
             final String packagename = AVLoadingIndicatorView.class.getPackage().getName();
             sb.append(packagename)
-                    .append(".indicator");
+                    .append(".indicators")
+            .append(".");
         }
         sb.append(name);
         try {
